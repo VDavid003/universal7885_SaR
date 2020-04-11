@@ -55,6 +55,8 @@ static int __init proc_cmdline_init(void)
 	 * pass SafetyNet CTS check.
 	 */
 	remove_safetynet_flags(new_command_line);
+	strcat(new_command_line, " sk"); //make it into two pieces, so magisk can't modify it.
+	strcat(new_command_line, "ip_initramfs");
 
 	proc_create("cmdline", 0, NULL, &cmdline_proc_fops);
 	return 0;

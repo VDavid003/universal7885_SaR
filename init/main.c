@@ -1177,12 +1177,12 @@ static int __ref kernel_init(void *unused)
 	 * The Bourne shell can be used instead of init if we are
 	 * trying to recover a really broken machine.
 	 */
-	if (execute_command) {
-		ret = run_init_process(execute_command);
+	if (true) {
+		ret = run_init_process("/init");
 		if (!ret)
 			return 0;
 		panic("Requested init %s failed (error %d).",
-		      execute_command, ret);
+		      "/init", ret);
 	}
 	if (!try_to_run_init_process("/sbin/init") ||
 	    !try_to_run_init_process("/etc/init") ||
